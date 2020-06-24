@@ -1,0 +1,31 @@
+<div class="container-fluid text-center">
+  <button class="btn btn-light mt-5 mb-3 py-3 btn-lg w-100" routerLink="/home/dashboard">
+    <i class="fa fa-heartbeat text-danger"></i> Cardio
+    <span class="text-danger"> Club</span></button>
+  <div class="py-3">
+    <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/dashboard">
+        <i class="fa fa-home fa-fw text-primary"></i> Dashboard
+      </button>
+      <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/add-member">
+      <i class="fa fa-plus-circle fa-fw text-primary"></i> Add Member
+    </button>
+    <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/members-list">
+      <i class="fa fa-bars fa-fw text-primary"></i> Members List
+    </button>
+    <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/alertboard">
+      <i class="fa fa-exclamation-triangle fa-fw text-primary"></i> Alert Board
+    </button>
+    <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/packages">
+      <i class="fa fa-th-large fa-fw text-primary"></i> Packages
+    </button>
+    <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/equipments">
+        <i class="fa fa-cog fa-fw text-primary"></i> Equipments
+      </button>
+    <button class="btn btn-light w-100 mb-3 text-left" routerLink="/home/admin-setup">
+      <i class="fa fa-user-circle fa-fw text-primary"></i> Admin Setup
+    </button>
+    <button class="btn btn-light text-danger w-100 mb-3 text-left" (click)="funLogout()">
+        <i class="fa fa-sign-out fa-fw"></i> Logout
+      </button>
+  </div>
+</div>

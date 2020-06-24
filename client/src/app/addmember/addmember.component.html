@@ -1,0 +1,268 @@
+<div class="bg-dark text-light w-100">
+  <div class="h4 ml-5 p-2">Add Member</div>
+</div>
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="f.form.valid && funSubmit()" novalidate>
+    <div class="row mx-0 px-0 py-3">
+      <div class="col-md-6">
+        <div class="card p-3 h-100 bg-light">
+          <div class="form-group">
+            <p class="h6"><i class="fa fa-id-card-o text-primary"></i> Name</p>
+            <input
+              type="text"
+              class="form-control my-3"
+              name="name"
+              #name="ngModel"
+              [(ngModel)]="formdata.name"
+              [ngClass]="{ 'border-danger': f.submitted && name.invalid }"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <p class="h6">
+              <i class="fa fa-map-marker text-primary"></i> Address
+            </p>
+            <input
+              type="text"
+              maxlength="60"
+              class="form-control my-3"
+              name="address"
+              #address="ngModel"
+              [(ngModel)]="formdata.address"
+              [ngClass]="{ 'border-danger': f.submitted && address.invalid }"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <p class="h6"><i class="fa fa-phone text-primary"></i> Contact</p>
+            <input
+              type="text"
+              maxlength="10"
+              class="form-control my-3"
+              name="contact"
+              #contact="ngModel"
+              [(ngModel)]="formdata.contact"
+              [ngClass]="{ 'border-danger': f.submitted && contact.invalid }"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <p class="h6">
+              <i class="fa fa-venus-mars text-primary"></i> Gender
+            </p>
+            <div
+              class="p-3 border rounded my-3 gender"
+              [ngClass]="{ 'border-danger': f.submitted && gender.invalid }"
+            >
+              <span class="mr-5"
+                ><input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  #gender="ngModel"
+                  [(ngModel)]="formdata.gender"
+                  required/>
+                Male <i class="fa fa-mars text-danger"></i
+              ></span>
+
+              <span class="mr-5"
+                ><input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  #gender="ngModel"
+                  [(ngModel)]="formdata.gender"
+                  required/>
+                Female <i class="fa fa-venus text-primary"></i
+              ></span>
+
+              <span
+                ><input
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  #gender="ngModel"
+                  [(ngModel)]="formdata.gender"
+                  required/>
+                Other <i class="fa fa-transgender text-success"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3 h-100 bg-light">
+          <div class="row px-0">
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-th-large text-primary"></i> Package
+                </p>
+                <select
+                  class="form-control my-3"
+                  name="package"
+                  #package="ngModel"
+                  [(ngModel)]="formdata.package"
+                  [ngClass]="{
+                    'border-danger': f.submitted && package.invalid
+                  }"
+                  (change)="funPackageDetails()"
+                  required
+                >
+                  <option value="">Select a Package</option>
+                  <option *ngFor="let x of packagesList" value={{x.package_name}}>{{x.package_name}}</option>
+                  
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-calendar text-primary"></i> Monthly Fees
+                </p>
+                <input
+                  type="text"
+                  class="form-control my-3"
+                  name="monthly_fees"
+                  #monthly_fees="ngModel"
+                  [(ngModel)]="formdata.monthly_fees"
+                  [ngClass]="{
+                    'border-danger': f.submitted && monthly_fees.invalid
+                  }"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row px-0 mt-3">
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-clock-o text-primary"></i> Duration
+                </p>
+                <select
+                  class="form-control my-3"
+                  name="duration"
+                  #duration="ngModel"
+                  [(ngModel)]="formdata.duration"
+                  [ngClass]="{
+                    'border-danger': f.submitted && duration.invalid
+                  }"
+                  (change)="calcTotalFees()"
+                  required
+                >
+                  <option value="">Select Duration</option>
+                  <option value="1">1 Month</option>
+                  <option value="3">3 Months</option>
+                  <option value="6">6 Months</option>
+                  <option value="12">1 Year</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-inr text-primary"></i> Total Fees
+                </p>
+                <input
+                  type="text"
+                  class="form-control my-3"
+                  name="total_fees"
+                  #total_fees="ngModel"
+                  [(ngModel)]="formdata.total_fees"
+                  [ngClass]="{
+                    'border-danger': f.submitted && total_fees.invalid
+                  }"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row px-0 mt-3">
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-inr text-success"></i> Paid Fees
+                </p>
+                <input
+                  type="text"
+                  class="form-control my-3"
+                  name="paid_fees"
+                  #paid_fees="ngModel"
+                  [(ngModel)]="formdata.paid_fees"
+                  [ngClass]="{'border-danger': f.submitted && paid_fees.invalid}"
+                  (input)="calcPending()"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-inr text-danger"></i> Pending Fees
+                </p>
+                <input
+                  type="text"
+                  class="form-control my-3"
+                  name="pending_fees"
+                  #pending_fees="ngModel"
+                  [(ngModel)]="formdata.pending_fees"
+                  [ngClass]="{
+                    'border-danger': f.submitted && pending_fees.invalid
+                  }"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row px-0 mt-3">
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-calendar text-success"></i> Start Date
+                </p>
+                <input
+                  type="date"
+                  class="form-control my-3"
+                  name="start_date"
+                  #start_date="ngModel"
+                  [(ngModel)]="formdata.start_date"
+                  [ngClass]="{
+                    'border-danger': f.submitted && start_date.invalid
+                  }"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <p class="h6">
+                  <i class="fa fa-calendar text-danger"></i> End Date
+                </p>
+                <input
+                  type="date"
+                  class="form-control my-3"
+                  name="end_date"
+                  #end_date="ngModel"
+                  [(ngModel)]="formdata.end_date"
+                  [ngClass]="{
+                    'border-danger': f.submitted && end_date.invalid
+                  }"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary mt-3 w-100" type="submit">Add Member</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

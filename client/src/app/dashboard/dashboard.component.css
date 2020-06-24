@@ -1,0 +1,31 @@
+.card {
+  color: white;
+  border: white;
+  border-radius: 15px;
+  outline: none;
+}
+
+.c1 {
+  background-image: linear-gradient(to left, #ff5e62, #ff9966);
+}
+
+.c2 {
+  background-image: linear-gradient(to left, #5b86e5, #36d1dc);
+}
+
+.c3 {
+  background-image: linear-gradient(to left, #642b73, #c6426e);
+}
+
+.c4 {
+  background-image: linear-gradient(to left, #3ca55c, #b5ac49);
+}
+
+.c5 {
+  background-image: linear-gradient(to left, #3ca55c, #b5ac49);
+}
+
+.c6 {
+  background-image: linear-gradient(to left, #ff5e62, #ff9966);
+}
+

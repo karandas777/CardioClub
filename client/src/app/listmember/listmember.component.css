@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+  height: auto;
+  font-family: "Alata", sans-serif;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 25%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
